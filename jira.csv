@@ -1,0 +1,54 @@
+Work Item ID,Issue Type,Summary,Description,Parent
+EPIC-1,Epic,Project Setup & Architecture,Initial project setup and technical planning,
+EPIC-2,Epic,Backend API,Node Express backend and database APIs,
+EPIC-3,Epic,Frontend Core Pages,Main site pages and layout,
+EPIC-4,Epic,Forum & Authentication,User authentication and forum system,
+EPIC-5,Epic,Admin Dashboard,Admin tools for managing content,
+EPIC-6,Epic,Testing & Deployment,Testing optimization and deployment tasks,
+
+TASK-1,Task,Define Site Architecture & Tech Stack,Decide frontend backend stack and architecture,EPIC-1
+TASK-2,Task,Set Up GitHub Repositories,Create repos and initialize README and gitignore,EPIC-1
+TASK-3,Task,Configure Environment Variables,Set up env variables and secrets,EPIC-1
+TASK-4,Task,Global Styling & Design System,Define colors fonts buttons and layout standards,EPIC-1
+
+TASK-5,Task,Design Database Schema,Create ERD for users websites readmes forum threads posts,EPIC-2
+TASK-6,Task,Initialize Node Express Backend,Set up Express server and base structure,EPIC-2
+TASK-7,Task,Set Up Database Connection,Connect database and test connection,EPIC-2
+TASK-8,Task,Implement User Authentication,Register login JWT or session auth,EPIC-2
+TASK-9,Task,Implement User Roles,Admin and standard user roles,EPIC-2
+TASK-10,Task,CRUD API for Websites,Create read update delete websites built,EPIC-2
+TASK-11,Task,CRUD API for Website Readmes,Manage readme pages per website,EPIC-2
+TASK-12,Task,Forum Categories API,Create and list forum categories,EPIC-2
+TASK-13,Task,Forum Threads and Posts API,Users create threads and replies,EPIC-2
+TASK-14,Task,GitHub Projects API Integration,Fetch GitHub repos via API and cache results,EPIC-2
+TASK-15,Task,Contact Form API Endpoint,Receive contact submissions backend,EPIC-2
+
+TASK-16,Task,Initialize Vite React Frontend,Create frontend project and routing,EPIC-3
+TASK-17,Task,Global Layout and Navigation,Header footer and navigation menu,EPIC-3
+TASK-18,Task,Home Page Hero Section,Hero with intro CTA and image,EPIC-3
+TASK-19,Task,About Me Page,Personal bio skills and experience page,EPIC-3
+TASK-20,Task,Projects Page GitHub Feed,Display GitHub projects from API,EPIC-3
+TASK-21,Task,Contact Page UI,Contact form frontend and validation,EPIC-3
+TASK-22,Task,Websites Index Page,List all websites built with cards,EPIC-3
+TASK-23,Task,Website Detail Page with README,Display site details and README content,EPIC-3
+TASK-24,Task,Portfolio Website README Page,Tech stack and architecture documentation page,EPIC-3
+
+TASK-25,Task,User Registration and Login UI,Signup and login forms,EPIC-4
+TASK-26,Task,Authenticated Navigation State,Show user state in navbar,EPIC-4
+TASK-27,Task,Forum Listing Page,Show categories or threads,EPIC-4
+TASK-28,Task,Forum Thread View Page,View threads and replies,EPIC-4
+TASK-29,Task,Create Thread and Reply Forms,Allow logged in users to post,EPIC-4
+TASK-30,Task,User Profile Page,Show user activity and posts,EPIC-4
+TASK-31,Task,Forum Moderation Controls,Admin moderation actions,EPIC-4
+
+TASK-32,Task,Admin Dashboard Layout,Protected admin dashboard shell,EPIC-5
+TASK-33,Task,Admin Manage Websites,Create edit delete websites,EPIC-5
+TASK-34,Task,Admin Manage Readmes,Edit README content via admin UI,EPIC-5
+TASK-35,Task,Admin Manage Forum Content,Moderate threads posts users,EPIC-5
+
+TASK-36,Task,Add Backend Tests,Test auth and core APIs,EPIC-6
+TASK-37,Task,Add Frontend Tests,Test critical components,EPIC-6
+TASK-38,Task,Accessibility and Performance Audit,Lighthouse and accessibility fixes,EPIC-6
+TASK-39,Task,CI CD Pipeline Setup,Automated build and deploy,EPIC-6
+TASK-40,Task,Production Deployment,Deploy frontend backend and configure domain,EPIC-6
+TASK-41,Task,Analytics and Error Monitoring,Add analytics and logging,EPIC-6
