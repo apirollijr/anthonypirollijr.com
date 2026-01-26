@@ -9,7 +9,7 @@ export default defineConfig([
   globalIgnores(['dist']),
   // Frontend (React) config
   {
-    files: ['src/**/*.{js,jsx}'],
+    files: ['client/**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
