@@ -48,3 +48,6 @@ coverage/
 
 # Misc
 *.local
+
+# Seed scripts (contain credentials)
+backend/src/scripts/
