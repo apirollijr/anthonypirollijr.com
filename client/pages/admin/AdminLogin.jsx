@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { authService } from '../../services/api';
 
 function AdminLogin() {
@@ -8,6 +8,17 @@ function AdminLogin() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the page they tried to visit, default to /admin
+  const from = location.state?.from?.pathname || '/admin';
+
+  // If already logged in, redirect to admin
+  useEffect(() => {
+    if (authService.isAuthenticated()) {
+      navigate('/admin', { replace: true });
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +27,8 @@ function AdminLogin() {
 
     try {
       await authService.login(email, password);
-      navigate('/admin');
+      // Redirect to the page they tried to visit
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err.message || 'Invalid email or password');
     } finally {

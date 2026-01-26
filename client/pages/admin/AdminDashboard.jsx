@@ -22,14 +22,7 @@ function AdminDashboard() {
   const [formLoading, setFormLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Check auth on mount
-  useEffect(() => {
-    if (!authService.isAuthenticated()) {
-      navigate('/admin/login');
-    }
-  }, [navigate]);
-
-  // Fetch websites
+  // Fetch websites on mount
   useEffect(() => {
     fetchWebsites();
   }, []);
@@ -39,8 +32,8 @@ function AdminDashboard() {
       const data = await websiteService.getAll();
       setWebsites(data);
       setLoading(false);
-    } catch (err) {
-      console.error('Failed to fetch websites:', err);
+    } catch (_err) {
+      console.error('Failed to fetch websites:', _err);
       setLoading(false);
     }
   };
