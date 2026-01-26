@@ -1,6 +1,31 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 
 function PublicLayout() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Close menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="public-layout">
       <header className="header">
@@ -8,7 +33,21 @@ function PublicLayout() {
           <div className="nav-brand">
             <NavLink to="/">Anthony Pirolli Jr</NavLink>
           </div>
-          <ul className="nav-links">
+
+          {/* Hamburger Button */}
+          <button
+            className={`hamburger ${menuOpen ? 'active' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+
+          {/* Navigation Links */}
+          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <li>
               <NavLink to="/" end>
                 Home
@@ -27,6 +66,9 @@ function PublicLayout() {
               <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
+
+          {/* Overlay */}
+          {menuOpen && <div className="nav-overlay" onClick={toggleMenu}></div>}
         </nav>
       </header>
 
