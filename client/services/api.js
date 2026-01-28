@@ -1,6 +1,5 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 
-// Get auth token from localStorage
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
   return {
@@ -9,23 +8,19 @@ const getAuthHeaders = () => {
   };
 };
 
-// ===== WEBSITES =====
 export const websiteService = {
-  // Get all websites (public)
   getAll: async () => {
     const response = await fetch(`${API_URL}/websites`);
     if (!response.ok) throw new Error('Failed to fetch websites');
     return response.json();
   },
 
-  // Get single website (public)
   getOne: async (id) => {
     const response = await fetch(`${API_URL}/websites/${id}`);
     if (!response.ok) throw new Error('Failed to fetch website');
     return response.json();
   },
 
-  // Create website (admin)
   create: async (data) => {
     const response = await fetch(`${API_URL}/websites`, {
       method: 'POST',
@@ -36,7 +31,6 @@ export const websiteService = {
     return response.json();
   },
 
-  // Update website (admin)
   update: async (id, data) => {
     const response = await fetch(`${API_URL}/websites/${id}`, {
       method: 'PUT',
@@ -47,7 +41,6 @@ export const websiteService = {
     return response.json();
   },
 
-  // Delete website (admin)
   delete: async (id) => {
     const response = await fetch(`${API_URL}/websites/${id}`, {
       method: 'DELETE',
@@ -58,7 +51,6 @@ export const websiteService = {
   },
 };
 
-// ===== AUTH =====
 export const authService = {
   login: async (email, password) => {
     const response = await fetch(`${API_URL}/users/login`, {
@@ -81,7 +73,6 @@ export const authService = {
   },
 };
 
-// ===== CONTACT =====
 export const contactService = {
   submit: async (data) => {
     const response = await fetch(`${API_URL}/contact`, {
@@ -90,7 +81,7 @@ export const contactService = {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({}));
       throw new Error(error.message || 'Failed to send message');
     }
     return response.json();
