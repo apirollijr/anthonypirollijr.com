@@ -6,7 +6,7 @@ services:
       - mongo_data:/data/db
     networks:
       - appnet
-
+      - web
   backend:
     build: ./backend
     restart: unless-stopped
